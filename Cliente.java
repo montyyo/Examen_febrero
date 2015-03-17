@@ -14,15 +14,16 @@ public class Cliente
     //bocadillos vendidos en la tienda
     private int numeroDeBocadillos;
     //constante para evaluar el numero de cliente
-    public static int numeroClienteActual=1;
+    public static  int numeroClienteActual=0;
     /**
      * Constructor de objetos de la clase cliente
      * @param numero de bocadillos que pide el cliente actual
      */
     public Cliente(int numeroBocadillos)
     {
-        numeroCliente=numeroClienteActual;
-        siguienteEnLaCola = new Cliente( numeroDeBocadillos());
+        
+        numeroCliente=numeroClienteActual+1;
+        
         numeroDeBocadillos=numeroBocadillos;
     }
 
@@ -32,8 +33,9 @@ public class Cliente
      *  @return siguiente cliente en la cola
      * 
      */
-    public Cliente SiguienteEnLaCola()
+    public Cliente getSiguienteEnLaCola(int bocadillos)
     {
+        siguienteEnLaCola = new Cliente( bocadillos);
         return siguienteEnLaCola;
         
     }
@@ -42,7 +44,7 @@ public class Cliente
      * metodo para saber el numero de bocadillos comprados
      * return@ numero de bocadillos comprados por el cliente
      */
-    public int numeroDeBocadillos()
+    public int getNumeroDeBocadillos()
     {
         return numeroDeBocadillos;
     }
@@ -61,7 +63,9 @@ public class Cliente
      */
     public String toString()
     {
-        return ("Cliente " + numeroCliente() + " :" + numeroDeBocadillos()+" bocadillo/s ");
+        return ("Cliente " + numeroCliente() + " :" +
+                getNumeroDeBocadillos()+" bocadillo/s "
+                + "( " +(getNumeroDeBocadillos()*Bocateria.PRECIO_BOCADILLO)+ " )");
     }
 }
 

@@ -1,33 +1,58 @@
+import java.util.*;
 
 /**
- * Write a description of class Bocateria here.
+ * clase para creacion de la bocateria y atencion de los clientes
  * 
- * @author (your name) 
- * @version (a version number or a date)
+ * @author (Marco Ibañez Antolin) 
+ * @version (13/3/2015)
  */
 public class Bocateria
 {
-    // instance variables - replace the example below with your own
-    private int x;
+    //cliente en cola en la primera posicion
+    private Cliente primeraPersonaEnCola;
+    //facturacion de la tienda;
+    private int facturacionActual;
+    //hashmap con el numero de cliente despachados
+    private HashMap<Integer,Cliente> clientesDespachados;
+    //constante de precio de los bocadillos
+    public static final int PRECIO_BOCADILLO= 5;
 
     /**
-     * Constructor for objects of class Bocateria
+     * contructor de la bocateria
      */
     public Bocateria()
     {
-        // initialise instance variables
-        x = 0;
+       
+       clientesDespachados=new HashMap<Integer,Cliente>();
+       
     }
 
     /**
-     * An example of a method - replace this comment with your own
+     * Metodo para implementar el nuevo cliente en cola de la bocateria
+     * @param siguiente cliente
      * 
-     * @param  y   a sample parameter for a method
-     * @return     the sum of x and y 
      */
-    public int sampleMethod(int y)
+    public void llegaNuevoClienteALaCola(int numeroDeBocadillos)
     {
-        // put your code here
-        return x + y;
+        if(primeraPersonaEnCola == null)
+        {
+            primeraPersonaEnCola=new Cliente(numeroDeBocadillos);
+        }
+        else
+        {
+            Cliente nextClient=primeraPersonaEnCola.getSiguienteEnLaCola(numeroDeBocadillos);
+        }
+        
+        
     }
+    
+    /**
+     * metodo para visualizar los datos del cliente
+     */
+    public void visualizarDatosClientesEnCola()
+    {
+        
+    }
+    
+    
 }
